@@ -1,17 +1,18 @@
 import 'dart:convert';
 
-class BannerResponse {
+class BannerResponseModel {
   int? status;
   String? message;
   List<BannerData>? data;
 
-  BannerResponse({
+  BannerResponseModel({
     this.status,
     this.message,
     this.data,
   });
 
-  factory BannerResponse.fromJson(Map<String, dynamic> json) => BannerResponse(
+  factory BannerResponseModel.fromJson(Map<String, dynamic> json) =>
+      BannerResponseModel(
         status: json["status"],
         message: json["message"],
         data: json["data"] == null

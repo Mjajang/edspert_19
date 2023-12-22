@@ -3,7 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:edspert_19/src/data/model/model.dart';
 import 'package:meta/meta.dart';
 
-import 'package:edspert_19/datasources/course_remote_datasource.dart';
+import 'package:edspert_19/src/data/datasource/remote/course_remote_datasource.dart';
 
 part 'course_event.dart';
 part 'course_state.dart';
@@ -16,7 +16,7 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
     on<CourseEvent>((event, emit) async {
       if (event is GetCourseListEvent) {
         emit(CourseLoading());
-        final result = await courseRemoteDatasource.getCourse();
+        final result = await courseRemoteDatasource.getCourses(event.majorName);
 
         emit(CourseSuccess(courseResponse: result));
       }

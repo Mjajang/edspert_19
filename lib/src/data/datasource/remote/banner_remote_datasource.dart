@@ -5,11 +5,15 @@ import 'package:edspert_19/constants/constants.dart';
 import 'package:edspert_19/src/data/model/model.dart';
 
 class BannerRemoteDatasource {
-  Future<BannerResponse> getBanners() async {
+  final Dio client;
+
+  BannerRemoteDatasource({required this.client});
+
+  Future<BannerResponseModel> getBanners() async {
     try {
       final url = '${LearningConstants.baseUrl}${LearningConstants.bannerPath}';
 
-      final result = await Dio().get(
+      final result = await client.get(
         url,
         options: Options(
           headers: {
@@ -18,7 +22,7 @@ class BannerRemoteDatasource {
         ),
       );
 
-      final bannerResponse = BannerResponse.fromJson(result.data);
+      final bannerResponse = BannerResponseModel.fromJson(result.data);
 
       return bannerResponse;
     } catch (e, stacktrace) {
@@ -27,7 +31,7 @@ class BannerRemoteDatasource {
         stackTrace: stacktrace,
         error: e,
       );
-      rethrow;
+      return BannerResponseModel();
     }
   }
 }

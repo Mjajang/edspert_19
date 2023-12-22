@@ -8,7 +8,7 @@ final class BannerInitial extends BannerState {}
 final class BannerLoading extends BannerState {}
 
 final class BannerSuccess extends BannerState {
-  final BannerResponse bannerResponse;
+  final BannerResponseModel bannerResponse;
 
   BannerSuccess({required this.bannerResponse});
 }

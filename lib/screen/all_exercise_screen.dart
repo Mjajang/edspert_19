@@ -1,9 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:edspert_19/bloc/exercise/exercise_bloc.dart';
-import 'package:edspert_19/datasources/course_remote_datasource.dart';
+import 'package:edspert_19/src/data/datasource/remote/course_remote_datasource.dart';
 
 class AllExerciseScreen extends StatelessWidget {
   final String courseId;
@@ -18,11 +19,11 @@ class AllExerciseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          ExerciseBloc(courseRemoteDatasource: CourseRemoteDatasource())
-            ..add(
-              GetExerciseListEvent(courseId: courseId),
-            ),
+      create: (context) => ExerciseBloc(
+          courseRemoteDatasource: CourseRemoteDatasource(client: Dio()))
+        ..add(
+          GetExerciseListEvent(courseId: courseId),
+        ),
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: const Color(0xff357AD4),

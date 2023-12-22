@@ -8,7 +8,7 @@ final class CourseInitial extends CourseState {}
 final class CourseLoading extends CourseState {}
 
 final class CourseSuccess extends CourseState {
-  final CourseResponse courseResponse;
+  final CourseListResponseModel courseResponse;
 
   CourseSuccess({required this.courseResponse});
 }

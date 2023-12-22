@@ -4,25 +4,25 @@
 
 import 'dart:convert';
 
-ExerciseResponse exerciseResponseFromJson(String str) =>
-    ExerciseResponse.fromJson(json.decode(str));
+ExerciseListResponseModel exerciseResponseFromJson(String str) =>
+    ExerciseListResponseModel.fromJson(json.decode(str));
 
-String exerciseResponseToJson(ExerciseResponse data) =>
+String exerciseResponseToJson(ExerciseListResponseModel data) =>
     json.encode(data.toJson());
 
-class ExerciseResponse {
+class ExerciseListResponseModel {
   int? status;
   String? message;
   List<ExerciseData>? data;
 
-  ExerciseResponse({
+  ExerciseListResponseModel({
     this.status,
     this.message,
     this.data,
   });
 
-  factory ExerciseResponse.fromJson(Map<String, dynamic> json) =>
-      ExerciseResponse(
+  factory ExerciseListResponseModel.fromJson(Map<String, dynamic> json) =>
+      ExerciseListResponseModel(
         status: json["status"],
         message: json["message"],
         data: json["data"] == null

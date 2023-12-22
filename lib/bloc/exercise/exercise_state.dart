@@ -8,7 +8,7 @@ final class ExerciseInitial extends ExerciseState {}
 final class ExerciseLoading extends ExerciseState {}
 
 final class ExerciseSuccess extends ExerciseState {
-  final ExerciseResponse exerciseResponse;
+  final ExerciseListResponseModel exerciseResponse;
 
   ExerciseSuccess({required this.exerciseResponse});
 }

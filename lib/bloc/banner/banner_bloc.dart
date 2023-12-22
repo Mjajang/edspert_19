@@ -3,7 +3,7 @@ import 'package:edspert_19/src/data/model/model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
-import 'package:edspert_19/datasources/banner_remote_datasource.dart';
+import 'package:edspert_19/src/data/datasource/remote/banner_remote_datasource.dart';
 
 part 'banner_event.dart';
 part 'banner_state.dart';
