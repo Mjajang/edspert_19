@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:edspert_19/constants/constants.dart';
-import 'package:edspert_19/models/banner_response_model.dart';
+import 'package:edspert_19/src/data/model/model.dart';
 
 class BannerRemoteDatasource {
   Future<BannerResponse> getBanners() async {

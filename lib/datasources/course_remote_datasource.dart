@@ -2,8 +2,7 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:edspert_19/constants/constants.dart';
-import 'package:edspert_19/models/course_response_model.dart';
-import 'package:edspert_19/models/exercise_response_model.dart';
+import 'package:edspert_19/src/data/model/model.dart';
 
 class CourseRemoteDatasource {
   Future<CourseResponse> getCourse() async {

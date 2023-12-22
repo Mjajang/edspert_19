@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:edspert_19/src/data/model/model.dart';
 import 'package:flutter/material.dart';
-
-import 'package:edspert_19/models/banner_response_model.dart';
 
 class BannerListWidget extends StatelessWidget {
   final List<BannerData> bannerList;

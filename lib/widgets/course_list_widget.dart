@@ -1,5 +1,5 @@
-import 'package:edspert_19/models/course_response_model.dart';
 import 'package:edspert_19/screen/all_exercise_screen.dart';
+import 'package:edspert_19/src/data/model/model.dart';
 import 'package:flutter/material.dart';
 
 class CourseListWidget extends StatelessWidget {
