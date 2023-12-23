@@ -9,7 +9,7 @@ String courseResponseToJson(CourseListResponseModel data) =>
 class CourseListResponseModel {
   int? status;
   String? message;
-  List<CourseData>? data;
+  List<CourseDataModel>? data;
 
   CourseListResponseModel({
     this.status,
@@ -23,8 +23,8 @@ class CourseListResponseModel {
         message: json["message"],
         data: json["data"] == null
             ? []
-            : List<CourseData>.from(
-                json["data"]!.map((x) => CourseData.fromJson(x))),
+            : List<CourseDataModel>.from(
+                json["data"]!.map((x) => CourseDataModel.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -36,7 +36,7 @@ class CourseListResponseModel {
       };
 }
 
-class CourseData {
+class CourseDataModel {
   String? courseId;
   String? majorName;
   String? courseCategory;
@@ -46,7 +46,7 @@ class CourseData {
   int? jumlahDone;
   int? progress;
 
-  CourseData({
+  CourseDataModel({
     this.courseId,
     this.majorName,
     this.courseCategory,
@@ -57,7 +57,8 @@ class CourseData {
     this.progress,
   });
 
-  factory CourseData.fromJson(Map<String, dynamic> json) => CourseData(
+  factory CourseDataModel.fromJson(Map<String, dynamic> json) =>
+      CourseDataModel(
         courseId: json["course_id"],
         majorName: json["major_name"],
         courseCategory: json["course_category"],

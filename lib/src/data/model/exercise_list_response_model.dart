@@ -13,7 +13,7 @@ String exerciseResponseToJson(ExerciseListResponseModel data) =>
 class ExerciseListResponseModel {
   int? status;
   String? message;
-  List<ExerciseData>? data;
+  List<ExerciseDataModel>? data;
 
   ExerciseListResponseModel({
     this.status,
@@ -27,8 +27,8 @@ class ExerciseListResponseModel {
         message: json["message"],
         data: json["data"] == null
             ? []
-            : List<ExerciseData>.from(
-                json["data"]!.map((x) => ExerciseData.fromJson(x))),
+            : List<ExerciseDataModel>.from(
+                json["data"]!.map((x) => ExerciseDataModel.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -40,7 +40,7 @@ class ExerciseListResponseModel {
       };
 }
 
-class ExerciseData {
+class ExerciseDataModel {
   String? exerciseId;
   String? exerciseTitle;
   String? accessType;
@@ -49,7 +49,7 @@ class ExerciseData {
   String? jumlahSoal;
   int? jumlahDone;
 
-  ExerciseData({
+  ExerciseDataModel({
     this.exerciseId,
     this.exerciseTitle,
     this.accessType,
@@ -59,7 +59,8 @@ class ExerciseData {
     this.jumlahDone,
   });
 
-  factory ExerciseData.fromJson(Map<String, dynamic> json) => ExerciseData(
+  factory ExerciseDataModel.fromJson(Map<String, dynamic> json) =>
+      ExerciseDataModel(
         exerciseId: json["exercise_id"],
         exerciseTitle: json["exercise_title"],
         accessType: json["access_type"],

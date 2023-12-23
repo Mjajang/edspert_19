@@ -9,7 +9,7 @@ class CourseListWidget extends StatelessWidget {
     this.isHomescreen = true,
   });
 
-  final List<CourseData> courseList;
+  final List<CourseDataModel> courseList;
   final bool isHomescreen;
 
   @override

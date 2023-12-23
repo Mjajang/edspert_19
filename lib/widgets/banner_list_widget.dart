@@ -3,7 +3,7 @@ import 'package:edspert_19/src/data/model/model.dart';
 import 'package:flutter/material.dart';
 
 class BannerListWidget extends StatelessWidget {
-  final List<BannerData> bannerList;
+  final List<BannerDataModel> bannerList;
 
   const BannerListWidget({
     Key? key,

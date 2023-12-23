@@ -3,7 +3,7 @@ import 'dart:convert';
 class BannerResponseModel {
   int? status;
   String? message;
-  List<BannerData>? data;
+  List<BannerDataModel>? data;
 
   BannerResponseModel({
     this.status,
@@ -17,8 +17,8 @@ class BannerResponseModel {
         message: json["message"],
         data: json["data"] == null
             ? []
-            : List<BannerData>.from(
-                json["data"].map((x) => BannerData.fromMap(x))),
+            : List<BannerDataModel>.from(
+                json["data"].map((x) => BannerDataModel.fromMap(x))),
       );
 
   String toJson() => json.encode(toMap());
@@ -31,14 +31,14 @@ class BannerResponseModel {
       };
 }
 
-class BannerData {
+class BannerDataModel {
   String? eventId;
   String? eventTitle;
   String? eventDescription;
   String? eventImage;
   String? eventUrl;
 
-  BannerData({
+  BannerDataModel({
     this.eventId,
     this.eventTitle,
     this.eventDescription,
@@ -46,12 +46,12 @@ class BannerData {
     this.eventUrl,
   });
 
-  factory BannerData.fromJson(String str) =>
-      BannerData.fromMap(json.decode(str));
+  factory BannerDataModel.fromJson(String str) =>
+      BannerDataModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory BannerData.fromMap(Map<String, dynamic> json) => BannerData(
+  factory BannerDataModel.fromMap(Map<String, dynamic> json) => BannerDataModel(
         eventId: json["event_id"],
         eventTitle: json["event_title"],
         eventDescription: json["event_description"],
