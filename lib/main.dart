@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
-import 'package:edspert_19/screen/splash_screen.dart';
+import 'package:edspert_19/src/presentation/screen/auth/splash_screen.dart';
 import 'package:edspert_19/src/data/datasource/remote/banner_remote_datasource.dart';
 import 'package:edspert_19/src/data/repository/repositories.dart';
 import 'package:edspert_19/src/domain/usecase/banner/get_banners_usecase.dart';
 import 'package:edspert_19/src/presentation/blocs/banner/banner_bloc.dart';
+import 'package:edspert_19/src/presentation/blocs/home_nav/home_nav_cubit.dart';
 import 'package:edspert_19/src/presentation/router/routes.dart';
 import 'package:edspert_19/src/presentation/screen/home/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -18,16 +19,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => BannerBloc(
-        getBannerUsercase: GetBannerUsercase(
-          bannerRepositoryAbs: BannerRepositoryImpl(
-            bannerRemoteDatasource: BannerRemoteDatasource(
-              client: Dio(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => BannerBloc(
+            getBannerUsercase: GetBannerUsercase(
+              bannerRepositoryAbs: BannerRepositoryImpl(
+                bannerRemoteDatasource: BannerRemoteDatasource(
+                  client: Dio(),
+                ),
+              ),
             ),
           ),
         ),
-      ),
+        BlocProvider(
+          create: (context) => HomeNavCubit(),
+        ),
+      ],
       child: MaterialApp(
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

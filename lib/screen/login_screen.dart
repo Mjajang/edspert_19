@@ -1,3 +1,4 @@
+import 'package:edspert_19/src/presentation/screen/home/home_navigation_screen.dart';
 import 'package:edspert_19/src/presentation/screen/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -52,7 +53,7 @@ class LoginScreen extends StatelessWidget {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => HomeScreen(),
+                        builder: (context) => HomeNavigationScreen(),
                       ),
                     );
                   },
