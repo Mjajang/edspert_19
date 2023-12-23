@@ -1,9 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:dio/dio.dart';
+import 'package:edspert_19/src/presentation/blocs/exercise/exercise_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:edspert_19/bloc/exercise/exercise_bloc.dart';
 import 'package:edspert_19/src/data/datasource/remote/course_remote_datasource.dart';
 
 class AllExerciseScreen extends StatelessWidget {

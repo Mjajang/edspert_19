@@ -1,8 +1,8 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:edspert_19/constants/constants.dart';
 import 'package:edspert_19/src/data/model/model.dart';
+import 'package:edspert_19/src/values/uri_paths.dart';
 
 class CourseRemoteDatasource {
   final Dio client;
@@ -11,7 +11,7 @@ class CourseRemoteDatasource {
 
   Future<CourseListResponseModel> getCourses(String majorName) async {
     try {
-      final url = '${LearningConstants.baseUrl}${LearningConstants.coursePath}';
+      final url = '${UriPath.baseUrl}${UriPath.coursePath}';
 
       final result = await client.get(
         url,
@@ -41,8 +41,7 @@ class CourseRemoteDatasource {
 
   Future<ExerciseListResponseModel> getExercises(String courseId) async {
     try {
-      final url =
-          '${LearningConstants.baseUrl}${LearningConstants.exercisePath}';
+      final url = '${UriPath.baseUrl}${UriPath.exercisePath}';
 
       final result = await client.get(
         url,

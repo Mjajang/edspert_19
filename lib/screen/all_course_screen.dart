@@ -1,9 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:edspert_19/src/presentation/blocs/course/course_bloc.dart';
 import 'package:edspert_19/widgets/course_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:edspert_19/bloc/course/course_bloc.dart';
 
 class AllCourseScreen extends StatelessWidget {
   final CourseBloc courseBloc;

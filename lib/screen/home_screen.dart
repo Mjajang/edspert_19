@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:edspert_19/bloc/banner/banner_bloc.dart';
-import 'package:edspert_19/bloc/course/course_bloc.dart';
 import 'package:edspert_19/src/data/datasource/remote/banner_remote_datasource.dart';
 import 'package:edspert_19/src/data/datasource/remote/course_remote_datasource.dart';
 import 'package:edspert_19/screen/all_course_screen.dart';
+import 'package:edspert_19/src/presentation/blocs/banner/banner_bloc.dart';
+import 'package:edspert_19/src/presentation/blocs/course/course_bloc.dart';
 import 'package:edspert_19/widgets/banner_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
