@@ -1,11 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:edspert_19/src/data/model/model.dart';
 import 'package:flutter/material.dart';
 
-class BannerListWidget extends StatelessWidget {
-  final List<BannerDataModel> bannerList;
+import 'package:edspert_19/src/domain/entity/banner_response_entity.dart';
 
-  const BannerListWidget({
+class BannerBuilder extends StatelessWidget {
+  final List<BannerDataEntity> bannerList;
+
+  const BannerBuilder({
     Key? key,
     required this.bannerList,
   }) : super(key: key);
@@ -18,7 +19,7 @@ class BannerListWidget extends StatelessWidget {
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemCount: bannerList.length,
-        separatorBuilder: (context, index) => const SizedBox(width: 10),
+        separatorBuilder: (context, index) => const SizedBox(width: 8),
         itemBuilder: (context, index) {
           final banner = bannerList[index];
 
@@ -28,7 +29,7 @@ class BannerListWidget extends StatelessWidget {
               width: 284,
               height: 146,
               child: Image.network(
-                banner.eventImage ?? 'No Image',
+                banner.eventImage,
                 fit: BoxFit.cover,
               ),
             ),

@@ -1,25 +1,30 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:edspert_19/src/data/model/model.dart';
+import 'package:edspert_19/src/domain/entity/banner_response_entity.dart';
+import 'package:edspert_19/src/domain/usecase/banner/get_banners_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
-import 'package:edspert_19/src/data/datasource/remote/banner_remote_datasource.dart';
-
 part 'banner_event.dart';
 part 'banner_state.dart';
+part 'states/get_banner_states.dart';
 
 class BannerBloc extends Bloc<BannerEvent, BannerState> {
-  final BannerRemoteDatasource bannerRemoteDatasource;
+  final GetBannerUsercase getBannerUsercase;
+
   BannerBloc({
-    required this.bannerRemoteDatasource,
+    required this.getBannerUsercase,
   }) : super(BannerInitial()) {
     on<BannerEvent>((event, emit) async {
       if (event is GetBannerListEvent) {
-        emit(BannerLoading());
+        emit(GetBannerLoading());
 
-        final result = await bannerRemoteDatasource.getBanners();
+        List<BannerDataEntity>? data = await getBannerUsercase();
 
-        emit(BannerSuccess(bannerResponse: result));
+        if (data == null) {
+          emit(GetBannerError(errorMessage: 'Something went wrong'));
+        } else {
+          emit(GetBannerSuccess(banners: data));
+        }
       }
     });
   }

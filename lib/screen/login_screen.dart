@@ -1,4 +1,4 @@
-import 'package:edspert_19/screen/home_screen.dart';
+import 'package:edspert_19/src/presentation/screen/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
