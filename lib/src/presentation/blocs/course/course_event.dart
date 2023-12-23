@@ -8,3 +8,9 @@ class GetCourseListEvent extends CourseEvent {
 
   GetCourseListEvent({required this.majorName});
 }
+
+class GetExercisesByCourseEvent extends CourseEvent {
+  final String courseId;
+
+  GetExercisesByCourseEvent({required this.courseId});
+}
