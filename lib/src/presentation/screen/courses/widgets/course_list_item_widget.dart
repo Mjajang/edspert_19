@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:edspert_19/src/presentation/router/routes.dart';
+import 'package:edspert_19/src/presentation/screen/courses/exercise_list/exercise_list_screen.dart';
 import 'package:edspert_19/src/values/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,13 @@ class CourseListItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).pushNamed(Routes.exerciseListScreen);
+        Navigator.of(context).pushNamed(
+          Routes.exerciseListScreen,
+          arguments: ExerciseListScreenArgs(
+            courseId: data.courseId,
+            courseName: data.majorName,
+          ),
+        );
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),

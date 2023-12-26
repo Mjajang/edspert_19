@@ -1,15 +1,38 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+
+import 'package:edspert_19/src/values/margins.dart';
 import 'package:flutter/material.dart';
 
-class AllExerciseScreen extends StatelessWidget {
+class ExerciseListScreenArgs {
   final String courseId;
-  final String majorTitle;
+  final String courseName;
 
-  const AllExerciseScreen({
-    Key? key,
+  ExerciseListScreenArgs({
     required this.courseId,
-    required this.majorTitle,
+    required this.courseName,
+  });
+}
+
+class ExerciseListScreen extends StatefulWidget {
+  const ExerciseListScreen({
+    Key? key,
   }) : super(key: key);
+
+  @override
+  State<ExerciseListScreen> createState() => _ExerciseListScreenState();
+}
+
+class _ExerciseListScreenState extends State<ExerciseListScreen> {
+  String courseName = '';
+
+  @override
+  void didChangeDependencies() {
+    final dynamic args = ModalRoute.of(context)?.settings.arguments;
+    if (args is ExerciseListScreenArgs) {
+      courseName = args.courseName;
+    }
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +48,26 @@ class AllExerciseScreen extends StatelessWidget {
               size: 18,
             )),
         title: Text(
-          majorTitle,
+          courseName,
           style: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w700,
             fontSize: 18,
           ),
         ),
+      ),
+      body: GridView.builder(
+        padding: Margins.paddingPage,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          mainAxisSpacing: 12,
+          crossAxisSpacing: 12,
+          childAspectRatio: 153 / 96,
+        ),
+        itemCount: 3,
+        itemBuilder: (context, index) {
+          return const Card();
+        },
       ),
     );
   }

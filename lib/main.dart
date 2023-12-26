@@ -12,6 +12,7 @@ import 'package:edspert_19/src/presentation/blocs/banner/banner_bloc.dart';
 import 'package:edspert_19/src/presentation/blocs/home_nav/home_nav_cubit.dart';
 import 'package:edspert_19/src/presentation/router/routes.dart';
 import 'package:edspert_19/src/presentation/screen/courses/course_list/course_list_screen.dart';
+import 'package:edspert_19/src/presentation/screen/courses/exercise_list/exercise_list_screen.dart';
 import 'package:edspert_19/src/presentation/screen/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -66,6 +67,7 @@ class MyApp extends StatelessWidget {
           Routes.splashScreen: (context) => const SplashScreen(),
           Routes.homeScreen: (context) => const HomeScreen(),
           Routes.courseListScreen: (context) => const CourseListScreen(),
+          Routes.exerciseListScreen: (context) => const ExerciseListScreen(),
         },
       ),
     );
