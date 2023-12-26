@@ -31,4 +31,26 @@ class AuthRemoteDatasource {
       return null;
     }
   }
+
+  Future<UserResponseModel> registerUser(
+      {required RegisterUserRequestModel request}) async {
+    try {
+      final url = '${UriPath.baseUrl}${UriPath.registrasiPath}';
+
+      final result = await client.post(
+        url,
+        options: Options(
+          headers: {'x-api-key': '18be70c0-4e4d-44ff-a475-50c51ece99a0'},
+        ),
+        data: request.toMap(),
+      );
+
+      final userData = UserResponseModel.fromJson(result.data);
+
+      return userData;
+    } catch (e, stacktrace) {
+      log(e.toString(), stackTrace: stacktrace);
+      return UserResponseModel();
+    }
+  }
 }

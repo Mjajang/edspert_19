@@ -5,4 +5,5 @@ class UriPath {
       "/exercise/data_course?major_name=IPA&user_email=testerngbayu@gmail.com";
   static String get exercisePath => "/exercise/data_exercise";
   static String get getUserByEmailPath => "/users";
+  static String get registrasiPath => "/users/registrasi";
 }

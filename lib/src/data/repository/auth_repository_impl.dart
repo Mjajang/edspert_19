@@ -3,7 +3,7 @@ import 'package:edspert_19/src/data/model/model.dart';
 import 'package:edspert_19/src/domain/entity/user_response_entity.dart';
 import 'package:edspert_19/src/domain/repository/auth_repository_abs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthRepositoryImpl implements AuthRepositoryAbs {
@@ -17,7 +17,9 @@ class AuthRepositoryImpl implements AuthRepositoryAbs {
   }
 
   @override
-  String? getCurrentSignedInEmail() {}
+  String? getCurrentSignedInEmail() {
+    return FirebaseAuth.instance.currentUser?.email;
+  }
 
   @override
   Future<UserDataEntity?> getUserByEmail({required String email}) async {
@@ -47,6 +49,17 @@ class AuthRepositoryImpl implements AuthRepositoryAbs {
   }
 
   @override
+  Future<bool> registerUser({required RegisterUserRequestModel request}) async {
+    final response = await remoteDatasource.registerUser(request: request);
+
+    if (response.message == 'ok') {
+      return true;
+    }
+
+    return false;
+  }
+
+  @override
   Future<bool> isUserRegistered() async {
     bool isRegistered =
         await getUserByEmail(email: getCurrentSignedInEmail() ?? '') != null;
@@ -56,7 +69,16 @@ class AuthRepositoryImpl implements AuthRepositoryAbs {
 
   @override
   Future<bool> signOut() async {
-    return false;
+    try {
+      await GoogleSignIn().signOut();
+      await FirebaseAuth.instance.signOut();
+      return true;
+    } catch (e, stacktrace) {
+      if (kDebugMode) {
+        print('Error signInWithGoogle: $e, $stacktrace');
+      }
+      return false;
+    }
   }
 
   @override
