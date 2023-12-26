@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:edspert_19/firebase_options.dart';
 import 'package:edspert_19/src/data/datasource/remote/course_remote_datasource.dart';
 import 'package:edspert_19/src/domain/repository/course_repository_abs.dart';
 import 'package:edspert_19/src/domain/usecase/courses/get_courses_usecase.dart';
@@ -14,10 +15,14 @@ import 'package:edspert_19/src/presentation/router/routes.dart';
 import 'package:edspert_19/src/presentation/screen/courses/course_list/course_list_screen.dart';
 import 'package:edspert_19/src/presentation/screen/courses/exercise_list/exercise_list_screen.dart';
 import 'package:edspert_19/src/presentation/screen/home/home_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   runApp(const MyApp());
 }
 
